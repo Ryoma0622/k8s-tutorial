@@ -5,10 +5,10 @@ spring:
     password: niceactionstacker
 
 slack:
-  baseUrl:
+  baseUrl: https://ca-black.slack.com/archives/
   bot:
     token:
-    id:
+    id: "@D019RS0MKTP"
 
 mybatis:
   mapperLocations: classpath*:/mapper/*.xml
