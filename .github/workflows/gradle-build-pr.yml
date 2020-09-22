@@ -29,5 +29,5 @@ jobs:
           file: ./docker/java/Dockerfile
           push: true
           tags: sup0ry0jodoi/nice-action-stacker:latest
-          build-args:
-            - SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          build-args: |
+            SLACK_BOT_TOKEN=${{ secrets.SLACK_BOT_TOKEN }}
