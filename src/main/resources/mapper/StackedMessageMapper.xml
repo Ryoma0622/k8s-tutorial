@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ryoma0622.niceactionstacker.mapper.StackedMessageMapper">
+  <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+    INSERT INTO stacked_message (slack_id, path)
+    VALUES (#{slackId}, #{path})
+  </insert>
+  <select id="selectBySlackIdAndPath" resultType="com.ryoma0622.niceactionstacker.entity.StackedMessage">
+    SELECT *
+    FROM stacked_message
+    WHERE slack_id = #{slackId}
+      AND path = #{path}
+  </select>
+</mapper>

@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: nice_action_stacker
+      MYSQL_USER: niceactionstacker
+      MYSQL_PASSWORD: niceactionstacker
+      TZ: 'Asia/Tokyo'
+    volumes:
+      - ./docker/db/my.cnf:/etc/mysql/conf.d/my.cnf
+      - ./docker/db/initdb.d:/docker-entrypoint-initdb.d
+      - ./docker/db/mysql_data:/var/lib/mysql
+    ports:
+      - 3306:3306
+
+  java:
+    image: sup0ry0jodoi/nice-action-stacker:0.0.1
+    build:
+      context: .
+      dockerfile: ./docker/java/Dockerfile
+      args:
+        - SLACK_BOT_TOKEN=${SLACK_BOT_TOKEN}
+    command: java -jar niceactionstacker-*.jar
+    depends_on:
+      - db
+    environment:
+      SPRING_DATASOURCE_URL: "jdbc:mysql://db:3306/nice_action_stacker"
+    ports:
+      - 8080:8080

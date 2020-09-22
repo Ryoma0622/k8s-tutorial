@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/nice_action_stacker
+    username: niceactionstacker
+    password: niceactionstacker
+
+slack:
+  baseUrl:
+  bot:
+    token:
+    id:
+
+mybatis:
+  mapperLocations: classpath*:/mapper/*.xml
+  configuration:
+    mapUnderscoreToCamelCase: true
